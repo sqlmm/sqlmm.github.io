@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css">
+    </link>
+
+    <script src="https://unpkg.com/@webcomponents/custom-elements@1.2.0/custom-elements.min.js"></script>
+    <script src="scripts/codemirror.js"></script>
+    <script src="scripts/codemirrorsql.js"></script>
+    <script src="scripts/autorefresh.js"></script>
+    <script src="scripts/main.js"></script>
+    <script>
+        window.onload = () => loadData('finaldb.db');
+    </script>
+
+    <link rel="icon" type="image/jpeg" href="./assets/kec-lite.jpeg" />
+    <title>SQL Murder Mystery</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+    
+    <nav class="navbar">
+        <div class="container">
+        <div class="logo">
+            <img src="./assets/kec_lite.jpeg" alt="Logo" class="logo-image" />
+            <h1>KEC Lite 2081 : SQL Murder Mystery</h1>
+          </div>
+          <div class="nav-links">
+              <a href="https://computerclubkec.github.io" class="nav-link" target="_blank">Website</a>
+              <a href="https://www.linkedin.com/company/computerclubkec/" class="nav-link" target="_blank">Linked In</a>
+              <a href="https://github.com/computerclubkec" class="nav-link" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </nav>
+      <main>
+
+          <header>
+              <h1>
+          <u>KEC-Lite 2081: SQL Murder Mystery</u>
+        </h1>
+        <img
+          src="./assets/roshan_detective.png"
+          alt="gnome workshop"
+          id="header_image"
+          />
+        </header>
+
+    <div >
+
+            <hr />
+          <h2>INTRODUCTION</h2>
+      <p>
+        Step into the role of a detective in this thrilling Murder Mystery SQL
+        Challenge. A <span class="note">terrible incident</span> has occurred,
+        and the only clues lie within structured data. Use your
+        <span class="note">SQL skills</span> to analyze tables, uncover
+        patterns, and <span class="note">identify the culprit</span>, their
+        motive, and the sequence of events. Each query brings you closer to
+        solving the mystery. <br /><span class="note"
+          >Are you ready to crack the case?</span
+        >
+      </p>
+<hr>
+
+            <h2>A bit of context</h2>
+      <p>
+        A <span class="hint">project prototype has been stolen</span> just
+        before the defense presentation tomorrow.
+        <span class="hint">Gaurav Giri</span>, the project owner, is desperate
+        for answers. Can you find the culprit and save the day?
+      </p>
+      <hr>
+
+      <h2>Exploring the Database Structure</h2>
+      <p>
+        Experienced SQL users can often use database queries to infer the
+        structure of a database. But each database system has different ways of
+        managing this information. The SQL Murder Mystery is built using <span class="note">SQLite.</span>
+        Use this SQL command to find the tables in the Murder Mystery database.
+      </p>
+    <h3>Run this query to find the names of the tables in this database.</h3>
+
+        <sql-exercise data-default-text="SELECT name 
+        FROM sqlite_master 
+        WHERE type = 'table';">
+        </sql-exercise>
+<hr>
+                <h3>
+
+                    Run this query to find the schema of the tables in this database.
+                </h3>
+            <sql-exercise data-default-text="SELECT sql 
+            FROM sqlite_master 
+            WHERE name = 'CCTVLogs';"></sql-exercise>
+                
+        
+    <hr>
+    <h2>The rest is up to you. FIND THE AMBITION KILLER!!!</h2>
+    <p>
+        If you're really comfortable with SQL, you can probably get it from here.<br>
+        But click <a class="hint" id="show-schema"><u>here</u></a> to show the schema diagram.
+        <img id="experienced-schema" src="./assets/schema.png" width='100%' height='auto' style="display:none;">
+    </p>
+    <h3>Best of Luck! Sherlock!</h3>
+    <h4>Tips:</h4>
+    <ul>
+      <li>You are provided with a <span class="hint">cheatsheet</span>. Use it!</li>
+      <li>Think like a detective.</li>
+      <li><span class="hint">Time</span> is money! Use it wisely!!</li>
+    </ul>
+                <sql-exercise data-default-text="--Type your queries and run here. This line is a comment. Start by running the query below.
+SELECT * FROM Interview WHERE PersonInterviewed='Gaurav Giri'; 
+              "></sql-exercise><hr>
+                <sql-exercise data-default-text="--Another cell for you.
+                
+                "></sql-exercise><hr>
+
+        <h2>Check your solution: </h2>
+        <div id="solution-box">
+            <input type="text" id="solution" placeholder="John Doe">
+            <button id="check-solution" class="run">Check</button>
+        </div>
+        <p id="right_answer" style="display: none;" class="right_answer">Noice! Detective Pandey questioned the culprit who confessed. </p>
+        <p id="wrong_answer" style="display: none;" class="wrong_answer">Not Quite Right! Don't worry you can try again.</p>
+
+        
+    </div>
+    
+    </main>
+    
+    <script src="https://cdn.knightlab.com/libs/orangeline/0.1.1/js/orangeline.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script type="text/javascript">
+        document.querySelector('#show-schema').addEventListener('click', function() {
+            document.querySelector('#experienced-schema').style.display = 'block';
+        });
+        document.getElementById('check-solution').addEventListener('click', function(){
+          solution = document.getElementById('solution').value;
+            if (CryptoJS.MD5(solution).toString() === '6c4f8ade9baa7198c160b529ccf8136e') {
+              console.log("Correct!");
+              document.getElementById('right_answer').style.display = 'block';
+              document.getElementById('wrong_answer').style.display = 'none';
+            } else {
+              console.log("Incorrect!");
+              document.getElementById('wrong_answer').style.display = 'block';
+              document.getElementById('right_answer').style.display = 'none';
+            }
+        })
+    </script>
+
+</body>
+
+</html>

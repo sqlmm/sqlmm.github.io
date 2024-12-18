@@ -1,0 +1,27 @@
+.
+├── 174092-clue-illustration.png
+├── CNAME
+├── css
+│   ├── main.css
+│   └── neat.css
+├── dir.txt
+├── index.html
+├── LICENSE
+├── prompt_beginner.pdf
+├── prompt_experienced.pdf
+├── README.md
+├── reference.pdf
+├── requirements.txt
+├── schema.png
+├── scripts
+│   ├── autorefresh.js
+│   ├── codemirror.js
+│   ├── codemirrorsql.js
+│   ├── lodash.js
+│   ├── main.js
+│   └── worker.sql.js
+├── sqlite_studio.pdf
+├── sql-murder-mystery.db
+└── walkthrough.html
+
+2 directories, 22 files
